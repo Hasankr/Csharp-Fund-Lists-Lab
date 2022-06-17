@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace _02._Gauss__Trick
 {
@@ -6,7 +8,20 @@ namespace _02._Gauss__Trick
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            List<int> numbers = Console.ReadLine().Split().Select(int.Parse).ToList();
+            List<int> gaussNUmbers = new List<int>();
+            for (int i = 0; i < numbers.Count / 2; i++)
+            {
+                int currentGaussNumber = numbers[i] + numbers[numbers.Count - 1 - i];
+                gaussNUmbers.Add(currentGaussNumber);
+
+
+            }
+            if (numbers.Count % 2 != 0)
+            {
+                gaussNUmbers.Add(numbers[numbers.Count / 2]);
+            }
+            Console.WriteLine(string.Join(" ", gaussNUmbers));
         }
     }
 }
